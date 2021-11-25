@@ -1,0 +1,17 @@
+$primary-color: #61bdeb;
+
+.btn {
+  cursor: pointer;
+  min-width: 120px;
+  padding: 10px 20px;
+
+  &--primary {
+    color: #fff;
+    background-color: $primary-color;
+    font-weight: 500;
+
+    &:hover {
+      background-color: darken($primary-color, 20%);
+    }
+  }
+}

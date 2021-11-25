@@ -1,0 +1,9 @@
+.expense-item {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+
+  &__title {
+    color: grey;
+  }
+}
