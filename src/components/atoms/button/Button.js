@@ -6,7 +6,7 @@ const Button = (props) => {
   return (
     <button 
       className={`btn btn--${modifier}`}
-      type={type}
+      type={type || 'button'}
       onClick={onClick}
     >
       {label}
