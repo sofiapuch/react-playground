@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import Button from '../../atoms/button/Button';
+
 import './UserForm.scss';
 
 const UserForm = (props) => {
@@ -49,7 +51,7 @@ const UserForm = (props) => {
         </div>
         <div className="grid-x grid-margin-x">
           <div className="cell medium-8">
-            <button className="btn btn--primary" type="submit">Add</button>
+            <Button modifier="primary" type="submit" label="Add" />
           </div>
         </div>
       </form>

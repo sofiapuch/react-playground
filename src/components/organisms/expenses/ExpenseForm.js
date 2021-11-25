@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import Button from '../../atoms/button/Button';
+
 import './ExpenseForm.scss';
 
 const ExpenseForm = (props) => {
@@ -49,7 +51,7 @@ const ExpenseForm = (props) => {
     return (
       <div className="expense-form grid-container">
         <div className="grid-x align-center">
-          <button className="btn btn--primary" onClick={toggleExpenseForm}>New expense</button>
+          <Button modifier="primary" type="button" label="New expense" onClick={toggleExpenseForm} />
         </div>
       </div>
     )
@@ -73,8 +75,8 @@ const ExpenseForm = (props) => {
               <input id="date" type="date" value={userInput.date} min="2019-01-01" max="2022-12-31" onChange={dateChanged} />
             </div>
               <div className="expense-form__button-wrapper">
-                <button className="btn btn--secondary" type="button" onClick={toggleExpenseForm}>Cancel</button>
-                <button className="btn btn--primary" type="submit">Add</button>
+                <Button modifier="secondary" type="button" label="Cancel" onClick={toggleExpenseForm} />
+                <Button modifier="primary" type="submit" label="Add" />
               </div>
             </div>
         </form>
