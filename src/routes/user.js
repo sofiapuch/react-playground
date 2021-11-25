@@ -1,7 +1,7 @@
+import UserComponentPage from "../pages/UserComponentPage";
+
 const UserRoute = () => {
-  return (
-    <p>User</p>
-  )
+  return <UserComponentPage />
 }
 
 export default UserRoute;
