@@ -1,7 +1,7 @@
+import ExpensesPage from '../pages/ExpensesPage';
+
 const ExpensesRoute = () => {
-  return (
-    <p>Expenses</p>
-  )
+  return <ExpensesPage />;
 }
 
 export default ExpensesRoute;
