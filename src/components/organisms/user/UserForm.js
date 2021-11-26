@@ -1,37 +1,25 @@
-import { useState } from 'react';
+import { useRef } from 'react';
 
 import Button from '../../atoms/button/Button';
 
 import './UserForm.scss';
 
 const UserForm = (props) => {
-
-  const [formData, updateForm] = useState({
-    name: '',
-    age: '',
-  });
-
-  const updateName = (event) => {
-    updateForm((prevState) => {
-      return { ...prevState, name: event.target.value }
-    });
-  };
-
-  const updateAge = (event) => {
-    updateForm((prevState) => {
-      return { ...prevState, age: event.target.value }
-    });
-  };
+  const nameInput = useRef();
+  const ageInput = useRef();
 
   const resetForm = () => {
-    updateForm(() => {
-      return { name: '', age: '' }
-    });
+    nameInput.current.value = '';
+    ageInput.current.value = '';
   }
 
   const submitForm = (event) => {
     event.preventDefault();
-    props.onSubmitUser(formData);
+
+    props.onSubmitUser({
+      name: nameInput.current.value,
+      age: ageInput.current.value
+    });
 
     resetForm();
   }
@@ -42,11 +30,21 @@ const UserForm = (props) => {
         <div className="grid-x grid-margin-x">
           <div className="cell medium-6">
             <label htmlFor="title">Name</label>
-            <input id="name" type="text" value={formData.name} onChange={updateName} />
+            <input
+              ref={nameInput}
+              id="name"
+              type="text"
+            />
           </div>
           <div className="cell medium-2">
             <label htmlFor="amount">Age</label>
-            <input id="age" type="number" value={formData.age} min="0" step="1" onChange={updateAge} />
+            <input
+              ref={ageInput}
+              id="age"
+              type="number"
+              min="0"
+              step="1"
+            />
           </div>
         </div>
         <div className="grid-x grid-margin-x">
