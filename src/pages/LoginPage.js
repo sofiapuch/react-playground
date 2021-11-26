@@ -1,9 +1,11 @@
 import DefaultTemplate from '../templates/Default';
 
+import LoginForm from '../components/organisms/user/LoginForm';
+
 const LoginPage = () => {
   return (
     <DefaultTemplate>
-      <p>Login page</p>
+      <LoginForm />
     </DefaultTemplate>
   )
 }
