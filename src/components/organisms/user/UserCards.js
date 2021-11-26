@@ -13,7 +13,11 @@ const UserCards = (props) => {
 
   return (
     <div className="grid-container">
-      {usersList.map((user, index) => <UserCard key={`${user.name}-${index}`} name={user.name} age={user.age} />)}
+      <ul>
+        <li>
+          {usersList.map((user, index) => <UserCard key={`${user.name}-${index}`} name={user.name} age={user.age} />)}
+        </li>
+      </ul>  
     </div>
   )
 }

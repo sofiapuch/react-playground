@@ -1,14 +1,17 @@
-import { Outlet } from 'react-router-dom';
-
+import React from 'react';
 import Navigation from '../layout/navigation/Navigation';
 
-const DefaultTemplate = () => {
+const DefaultTemplate = (props) => {
   return (
-    <div>
+    <React.Fragment>
       <Navigation />
-      <Outlet />
-    </div>
+      <div className={`page__body ${props.className ? props.className : ''}`}>
+        {props.children}
+      </div>
+    </React.Fragment>
   )
 }
 
 export default DefaultTemplate;
+
+

@@ -1,8 +1,8 @@
-import DefaultTemplate from "./templates/Default";
+import { Outlet } from 'react-router-dom';
 
 const App = () => {
   return (
-    <DefaultTemplate />
+    <Outlet />
   );
 }
 

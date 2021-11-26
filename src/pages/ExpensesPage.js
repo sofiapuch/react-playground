@@ -1,4 +1,6 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
+
+import DefaultTemplate from '../templates/Default';
 
 import ExpenseForm from '../components/organisms/expenses/ExpenseForm';
 import Expenses from '../components/organisms/expenses/Expenses';
@@ -28,10 +30,10 @@ const ExpensesPage = () => {
   };
 
   return (
-    <div>
+    <DefaultTemplate>
       <ExpenseForm onSaveForm={getFormData} />
       <Expenses items={expenses} />
-    </div>
+    </DefaultTemplate>
   )
 }
 
