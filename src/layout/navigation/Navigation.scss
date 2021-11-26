@@ -1,0 +1,17 @@
+@import '../../styles/vars';
+
+.navigation {
+  background-color: $blue-gray;
+  padding: 1rem 0;
+
+  &__main {
+    display: flex;
+    align-items: center;
+  }
+
+  &__link {
+    display: block;
+    color: $blue-gray-900;
+    margin-right: 1rem;
+  }
+}

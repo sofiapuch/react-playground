@@ -1,4 +1,4 @@
-$primary-color: #61bdeb;
+@import '../../../styles/vars';
 
 .btn {
   cursor: pointer;
@@ -6,12 +6,16 @@ $primary-color: #61bdeb;
   padding: 10px 20px;
 
   &--primary {
-    color: #fff;
-    background-color: $primary-color;
+    color: $blue-gray-900;
+    background-color: $teal-200;
+    border: 1px solid $teal-200;
     font-weight: 500;
+    transition: .2s ease-in;
 
     &:hover {
-      background-color: darken($primary-color, 20%);
+      color: $white;
+      background-color: $teal-400;
+      border-color: $teal-400;
     }
   }
 }
