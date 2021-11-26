@@ -8,6 +8,7 @@ import 'foundation-sites/dist/css/foundation.min.css';
 import App from './App';
 import ExpensesRoute from './routes/expenses';
 import UserRoute from './routes/user';
+import LoginRoute from './routes/login';
 
 import reportWebVitals from './reportWebVitals';
 
@@ -18,6 +19,7 @@ ReactDOM.render(
         <Route path="/" element={<App />}>
           <Route path="expenses" element={<ExpensesRoute />} />
           <Route path="user-component" element={<UserRoute />} />
+          <Route path="login" element={<LoginRoute />} />
         </Route>
       </Routes>
     </BrowserRouter>
