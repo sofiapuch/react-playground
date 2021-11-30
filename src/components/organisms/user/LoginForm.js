@@ -1,18 +1,18 @@
-import { useState, useRef } from 'react';
+import { useState, useEffect } from 'react';
 
 import Card from '../../../layout/card/Card';
 import Button from '../../atoms/button/Button';
 
 const LoginForm = (props) => {
   const [isFormValid, setFormValidity] = useState(false);
-  const emailInput = useRef();
-  const passwordInput = useRef();
+  const [emailInput, setEmail] = useState('');
+  const [passwordInput, setPassword] = useState('');
 
-  const checkValidity = () => {
-    if (emailInput.current.value.match(/@/g) && passwordInput.current.value.length >= 4 ) {
-      setFormValidity(true);
-    }
-  }
+  useEffect(() => {
+    setFormValidity(
+      emailInput.match(/@/g) && passwordInput.length >= 4
+    );
+  }, [emailInput, passwordInput]);
 
   const submitForm = (event) => {
     event.preventDefault();
@@ -29,19 +29,17 @@ const LoginForm = (props) => {
                 <div className="cell">
                   <label htmlFor="email">Email</label>
                   <input
-                    ref={emailInput}
                     id="email"
                     type="email"
-                    onChange={checkValidity}
+                    onChange={(e)=>setEmail(e.target.value)}
                   />
                 </div>
                 <div className="cell">
                   <label htmlFor="password">Password</label>
                   <input
-                    ref={passwordInput}
                     id="password"
                     type="password"
-                    onChange={checkValidity}
+                    onChange={(e)=>setPassword(e.target.value)}
                   />
                 </div>
                 <div className="cell">
