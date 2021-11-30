@@ -9,9 +9,16 @@ const LoginForm = (props) => {
   const [passwordInput, setPassword] = useState('');
 
   useEffect(() => {
-    setFormValidity(
-      emailInput.match(/@/g) && passwordInput.length >= 4
-    );
+    const timer = setTimeout(() => {
+      setFormValidity(
+        emailInput.match(/@/g) && passwordInput.length >= 4
+      );
+    }, 500);
+
+    // Clear timer before a new one is set
+    return () => {
+      clearTimeout(timer);
+    }
   }, [emailInput, passwordInput]);
 
   const submitForm = (event) => {
