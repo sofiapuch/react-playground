@@ -18,4 +18,11 @@
       border-color: $teal-400;
     }
   }
+
+  &.disabled {
+    color: $gray-400;
+    background-color: $gray-200;
+    border-color: $gray-200;
+    cursor: not-allowed;
+  }
 }
