@@ -1,25 +1,56 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useReducer } from 'react';
 
 import Card from '../../../layout/card/Card';
 import Button from '../../atoms/button/Button';
 
+const formReducer = (state, action) => {
+  if (action.type === 'EMAIL') {
+    return {
+      ...state,
+      email: action.value
+    }
+  }
+  else if (action.type === 'PASSWORD') {
+    return {
+      ...state,
+      password: action.value
+    }
+  }
+
+  if (action.type === 'IS_VALID') {
+    return {
+      ...state,
+      isValid: state.email.match(/@/g) && state.password.length >= 4
+    }
+  }
+
+  return {
+    isValid: false,
+    email: '',
+    password: ''
+  }
+};
+
 const LoginForm = (props) => {
-  const [isFormValid, setFormValidity] = useState(false);
-  const [emailInput, setEmail] = useState('');
-  const [passwordInput, setPassword] = useState('');
+
+  const [formState, dispatchForm] = useReducer(
+    formReducer,
+    {
+      isValid: false,
+      email: '',
+      password: ''
+    });
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setFormValidity(
-        emailInput.match(/@/g) && passwordInput.length >= 4
-      );
+      dispatchForm({type: 'IS_VALID'})
     }, 500);
 
     // Clear timer before a new one is set
     return () => {
       clearTimeout(timer);
     }
-  }, [emailInput, passwordInput]);
+  }, [formState.email, formState.password]);
 
   const submitForm = (event) => {
     event.preventDefault();
@@ -38,7 +69,7 @@ const LoginForm = (props) => {
                   <input
                     id="email"
                     type="email"
-                    onChange={(e)=>setEmail(e.target.value)}
+                    onChange={(e)=>dispatchForm({type: 'EMAIL', value: e.target.value})}
                   />
                 </div>
                 <div className="cell">
@@ -46,11 +77,11 @@ const LoginForm = (props) => {
                   <input
                     id="password"
                     type="password"
-                    onChange={(e)=>setPassword(e.target.value)}
+                    onChange={(e)=>dispatchForm({type: 'PASSWORD', value: e.target.value})}
                   />
                 </div>
                 <div className="cell">
-                  <Button modifier="primary" type="submit" label="Login" disabled={!isFormValid} />
+                  <Button modifier="primary" type="submit" label="Login" disabled={!formState.isValid} />
                 </div>
               </div>
             </form>
