@@ -28,6 +28,7 @@ const LoginPage = () => {
   return (
     <DefaultTemplate>
       <div className="grid-container">
+        Test change
         {!isLoggedIn && <LoginForm onSignIn={signIn}/>}
         {isLoggedIn && <WelcomeCard />}
       </div>
