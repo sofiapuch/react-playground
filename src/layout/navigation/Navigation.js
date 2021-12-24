@@ -1,10 +1,9 @@
 import { NavLink } from 'react-router-dom';
-
-import Login from '../../components/molecules/login/Login';
+import Button from '../../components/atoms/button/Button';
 
 import './Navigation.scss';
 
-const Navigation = () => {
+const Navigation = (props) => {
   return (
     <div className="navigation">
       <div className="grid-container navigation__inner">
@@ -13,7 +12,14 @@ const Navigation = () => {
           <NavLink className="navigation__link" to="/user-component">User Component</NavLink>
         </nav>
         <nav className="navigation__main--right">
-          <Login className="navigation__link" />
+          {props.userSignedIn
+            ? <Button
+                label="Logout"
+                modifier="text"
+                onClick={props.onSignOut}
+              />
+            : <NavLink className={props.className} to="/login">Login</NavLink>
+          }
         </nav>
       </div>
     </div>

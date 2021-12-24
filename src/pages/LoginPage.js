@@ -5,7 +5,7 @@ import DefaultTemplate from '../templates/Default';
 import LoginForm from '../components/organisms/user/LoginForm';
 import WelcomeCard from '../components/molecules/cards/WelcomeCard';
 
-const LoginPage = () => {
+const LoginPage = (props) => {
   const [isLoggedIn, updateLogin] = useState(false);
 
   useEffect(() => {
@@ -25,10 +25,18 @@ const LoginPage = () => {
     updateLogin(true);
   }
 
+  const signOut = () => {
+    if (!isLoggedIn) {
+      return;
+    }
+
+    localStorage.setItem('isLoggedIn', 'false');
+    updateLogin(false);
+  }
+
   return (
-    <DefaultTemplate>
+    <DefaultTemplate userSignedIn={isLoggedIn} onSignOut={signOut}>
       <div className="grid-container">
-        Test change
         {!isLoggedIn && <LoginForm onSignIn={signIn}/>}
         {isLoggedIn && <WelcomeCard />}
       </div>
